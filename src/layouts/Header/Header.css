@@ -1,0 +1,36 @@
+.header {
+    border-bottom: 1px solid #DBDCE0;
+    padding: 40px 0;
+}
+
+.header-home {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 40px;
+    border-bottom: none;
+    margin-bottom: 0;
+    padding: 0;
+}
+
+.header .container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.header__logo a {
+    display: flex;
+    justify-content: center;
+}
+
+.header__icons {
+    display: flex;
+    gap: 30px;
+    margin-right: 0;
+}
+
+.header__icons a{
+    display: flex;
+    justify-content: center;
+}

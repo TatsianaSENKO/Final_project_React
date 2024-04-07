@@ -1,0 +1,148 @@
+.page-product {
+    padding-top: 40px;
+    border-top: 1px solid #DBDCE0;
+}
+
+.page-product .container {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 70px;
+}
+
+.page-product__image {
+    /* width: 630px; */
+}
+
+.page-product__image img{
+    width: 100%;
+}
+
+.page-product__info {
+    max-width: 370px;
+    padding-top: 50px;
+    /* margin-left: 70px; */
+}
+
+.page-product__name {
+    font-family: 'Raleway', sans-serif;
+    font-size: 32px;
+    line-height: 40px;
+    font-weight: 500;
+    color:  #122947;
+    margin-bottom: 15px;
+}
+
+.page-product__category {
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 400;
+    color:  #9A9DA0;
+    margin-bottom: 45px;
+}
+
+.page-product__description {
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 400;
+    color:  #122947;
+    padding-bottom: 45px;
+    margin-top: 45px;
+    border-bottom: 1px solid #B3BAC1;
+}
+
+.size__title,
+.product__size label {
+    font-size: 18px;
+    line-height: 26px;
+    font-weight: 500;
+    color:  #122947;
+}
+
+/* button,
+h3 {
+  all: unset;
+} */
+
+
+.accordion__item {
+    margin-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #B3BAC1;
+}
+
+.accordion__header {
+    all: unset;
+    display: flex;
+    justify-content: space-between;
+}
+
+.accordion__title {
+    font-size: 18px;
+    line-height: 26px;
+    font-weight: 500;
+    color:  #122947;
+    width: 100%;
+    border: none;
+    background: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.accordion__icon {
+    width: 12px;
+    height: 12px;
+    background: url(/src/img/icon_tab+.png) no-repeat center;
+}
+
+.accordion__title[data-state='open'] > .accordion__icon {
+    background: url(/src/img/icon_tab-.png) no-repeat center;
+  }
+
+.accordion__content {
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400;
+    color:  #122947;
+    margin-top: 20px;
+}
+
+.page-product__size {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 45px;
+}
+
+.page-product__pr {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    margin-top: 45px;
+}
+
+.page-product__price {
+    font-size: 26px;
+    line-height: 38px;
+    font-weight: 500;
+    color:  #122947;
+}
+
+.recommendations .container {
+    margin-top: 140px;
+}
+
+.recommendations__title {
+    font-family: 'Raleway', sans-serif;
+    font-size: 32px;
+    line-height: 40px;
+    font-weight: 500;
+    color:  #122947;
+    margin-bottom: 60px;
+    text-align: center;
+}
+
+.recommendations__list {
+    display: flex;
+    gap: 30px;
+}

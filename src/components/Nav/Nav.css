@@ -1,0 +1,44 @@
+.nav__toggle {
+    border: none;
+    background: none;
+    display: none;
+}
+
+
+.toggle__icon{
+    display: flex;
+    cursor: pointer;
+}
+
+.header__nav {
+    margin-left: auto;
+}
+
+.header__nav .social {
+    margin-top: 20px;
+}
+
+.nav__list {
+    display: flex;
+    gap: 35px;
+    margin-right: 50px;
+}
+
+.nav__item {
+    width: 60px;
+}
+
+.nav__item:last-child {
+    display: none;
+}
+
+.nav__item a {
+    font-size: 16px;
+    line-height: 24px;
+    color: #122947;
+    display: block;
+}
+
+.nav__item a:hover {
+    font-weight: 600;
+}

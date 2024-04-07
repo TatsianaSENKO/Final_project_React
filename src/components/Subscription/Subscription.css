@@ -1,0 +1,31 @@
+.subscription {
+    margin-top: 140px;
+    margin-bottom: 140px;
+}
+
+.subscription .container {
+    display: flex;
+}
+
+.subscription__images {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    margin-right: 70px;
+}
+
+.subscription__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.subscription__title {
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 40px;
+    margin-bottom: 30px;
+}
+
+.subscription__text{
+    margin-bottom: 40px;
+}

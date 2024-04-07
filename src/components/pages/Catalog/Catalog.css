@@ -1,0 +1,118 @@
+.catalog {
+    padding-top: 40px;
+}
+
+.catalog__header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.catalog__title {
+    font-size: 36px;
+    line-height: 48px;
+    font-weight: 500;
+}
+
+.btn-filter {
+    width: 140px;
+    height: 40px;
+    font-size: 16px;
+}
+
+.catalog__list {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    justify-content: center;
+    grid-gap: 30px;
+    margin-top: 60px;
+}
+
+.catalog__product {
+    width: 270px;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 300px 20px 20px 20px;
+    background: url(/src/img/product_bg.png) no-repeat;
+}
+
+.product__name {
+    font-family: 'Raleway', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 500;
+    color:  #122947;
+}
+
+.product__price {
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 500;
+    color:  #122947;
+}
+
+.product__category,
+.product__size {
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400;
+    color:  #9A9DA0;
+}
+
+.product__description {
+    display: grid;
+    grid-template-columns: auto auto;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.catalog__btns {
+    display: flex;
+    align-items: center;
+    margin-top: 50px;
+    position: relative;
+}
+
+.pagination {
+    display: flex;
+    gap: 10px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+.total__number::before {
+    content: "";
+    display: block;
+    width: 50px;
+    height: 1px;
+    background-color: #122947;
+}
+
+.total__number {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #9A9DA0;
+}
+
+.recents .container {
+    margin-top: 140px;
+}
+
+.recents__title {
+    font-family: 'Raleway', sans-serif;
+    font-size: 32px;
+    line-height: 40px;
+    font-weight: 500;
+    color:  #122947;
+    margin-bottom: 60px;
+    text-align: center;
+}
+
+.recents__list {
+    display: flex;
+    gap: 30px;
+}

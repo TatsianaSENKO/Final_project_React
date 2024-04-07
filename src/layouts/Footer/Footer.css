@@ -1,0 +1,34 @@
+.footer {
+    margin-top: 140px;
+    background: rgba(244, 241, 237, 1);
+}
+
+.footer__top {
+    border-bottom: 1px solid #D1D1D1;
+}
+
+.footer__top .container {
+    display: flex;
+    align-items: center;
+    padding: 60px 20px;
+}
+
+.footer__nav {
+    margin-left: 70px;
+}
+
+.footer .social {
+    margin-left: auto;
+}
+
+.footer__bottom .container {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 20px;
+}
+
+.footer__bottom span {
+    font-size: 12px;
+    line-height: 18px;
+    color: #959595;
+}
