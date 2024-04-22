@@ -1,162 +1,145 @@
 import { Link } from "react-router-dom"
+import { useContext, useEffect, useState, useMemo, useCallback } from 'react'
+
+import AliceCarousel from 'react-alice-carousel'
+import 'react-alice-carousel/lib/alice-carousel.css'
+
+import { MainContext } from '../../Main'
 
 import Subscription from "../../Subscription/Subscription"
 import ContactsSection from "../../ContactsSection/ContacsSection"
+import Filter from '../../Filter/Filter'
+import CatalogViewedSection from "../../CatalogViewedSection/CatalogViewedSection.jsx"
+
+
 
 import "./Catalog.css"
 
 function Catalog() {
+
+    const COMPLETE_FILTER = {
+        CreamFace: "creamFace",
+        MaskFace: "maskFace",
+        PowderFace: "powderFace",
+        TonicFace: "tonicFace",
+        CreamBody: "creamBody",
+        OilBody: "oilBody",
+        ScrubBody: "scrubBody",
+        All: "all"
+      }
+
+
+    const data = useContext(MainContext)
+
+    const [openFilter, setOpenFilter] = useState()
+
+    const [dataCatalog, setDataCatalog] = useState([])
+
+    const [dataCatalogFilter, setDataCatalogFilter] = useState([])
+
+    const [filter, setFilter] = useState(COMPLETE_FILTER.All)
+
+    const [dataSlaider, setDataSlaider] = useState([])
+
+    const CatalogList = () => {
+        let dataTmp = data.filter(item => item.base == 'true')
+
+        setDataCatalogFilter([...dataTmp])
+        setOpenFilter ()
+    }
+
+    const CatalogListFilter = () => {
+
+        setDataCatalogFilter([...filteredTodos])
+        setOpenFilter ()
+    }
+
+    useEffect(() => {
+
+        let dataTmp = data.filter(item => item.base == 'true')
+        setDataCatalog([...dataTmp])
+        setDataCatalogFilter([...dataTmp])
+
+    }, [data])
+
+    const getfilteredTodos = (list, curFilter = COMPLETE_FILTER.All) => {
+
+        return list.filter((item) => item.categoryFilter === curFilter)
+
+    }
+
+    const filteredTodos = useMemo(() => getfilteredTodos(dataCatalog, filter), [filter])
+
+    const handleFilterUpdate = useCallback((newFilter) => {
+        setFilter(newFilter);
+    }, [])
+
+    function partData (array, size) {
+        const partedArray = []
+
+        for (let i = 0; i < array.length; i += size) {
+            partedArray.push(array.slice(i, i + size))
+        }
+        return partedArray
+    }
+
+    useEffect(() => {
+
+        const partSize = 12
+
+        const dataSlaiderTmp = partData (dataCatalogFilter, partSize)
+
+        setDataSlaider([...dataSlaiderTmp])
+
+    }, [dataCatalogFilter])
+
+    const items = dataSlaider.map((list, index) => {
+        return (
+            <div key={index} className="catalog__list">
+                {list.map((item, index) => {
+                        return (
+                        <div key={index} className="catalog__product" style={{background: `url(${item.imageTile}) no-repeat`}}>
+                            <div className="product__description">
+                                <Link className="product__name" to={`/product/${item.subcategory}/${item.id}/`}>{item.name}</Link>
+                                <span className="product__price">{item.price} &#8381; </span>
+                                <div className="product__category">{item.subcategory}</div>
+                                <div className="product__size">{item.size}</div>
+                            </div>
+                        </div>
+                        )
+                    })}
+            </div>
+        )
+        })
+
+    const responsive = {
+        0: { items: 1 },
+        568: { items: 1 },
+        1024: { items: 1 },
+    }
+
+
 	return (
         <>
+        <Filter active={openFilter} curFilter={filter} updateFilter={handleFilterUpdate} listFilter={CatalogListFilter} resetFilter={CatalogList}/>
+
         <section className="catalog">
             <div className="container">
                 <div className="catalog__header">
                     <h3 className="catalog__title">Каталог</h3>
-                    <button className="btn btn-filter">Фильтр</button>
+                    <button className={`btn btn-filter ${openFilter}`} onClick={() => setOpenFilter ('active')}>Фильтр</button>
+                    <button className={`btn btn-filter none ${openFilter}`} onClick={() => setOpenFilter ()}>X</button>
                 </div>
-                <ul className="catalog__list">
-                    <li className="catalog__product">
-                        <div className="product__description">
-                            <Link className="product__name" to="/product/">Product</Link>
-                            <span className="product__price">10 &#8381; </span>
-                            <div className="product__category">крем</div>
-                            <div className="product__size">30ml</div>
-                        </div>
-                    </li>
-                    <li className="catalog__product">
-                        <div className="product__description">
-                            <Link className="product__name" to="/product/">Product</Link>
-                            <span className="product__price">10 &#8381; </span>
-                            <div className="product__category">крем</div>
-                            <div className="product__size">30ml</div>
-                        </div>
-                    </li>
-                    <li className="catalog__product">
-                        <div className="product__description">
-                            <Link className="product__name" to="/product/">Product</Link>
-                            <span className="product__price">10 &#8381; </span>
-                            <div className="product__category">крем</div>
-                            <div className="product__size">30ml</div>
-                        </div>
-                    </li>
-                    <li className="catalog__product">
-                        <div className="product__description">
-                            <Link className="product__name" to="/product/">Product</Link>
-                            <span className="product__price">10 &#8381; </span>
-                            <div className="product__category">крем</div>
-                            <div className="product__size">30ml</div>
-                        </div>
-                    </li>
-                    <li className="catalog__product">
-                        <div className="product__description">
-                            <Link className="product__name" to="/product/">Product</Link>
-                            <span className="product__price">10 &#8381; </span>
-                            <div className="product__category">крем</div>
-                            <div className="product__size">30ml</div>
-                        </div>
-                    </li>
-                    <li className="catalog__product">
-                        <div className="product__description">
-                            <Link className="product__name" to="/product/">Product</Link>
-                            <span className="product__price">10 &#8381; </span>
-                            <div className="product__category">крем</div>
-                            <div className="product__size">30ml</div>
-                        </div>
-                    </li>
-                    <li className="catalog__product">
-                        <div className="product__description">
-                            <Link className="product__name" to="/product/">Product</Link>
-                            <span className="product__price">10 &#8381; </span>
-                            <div className="product__category">крем</div>
-                            <div className="product__size">30ml</div>
-                        </div>
-                    </li>
-                    <li className="catalog__product">
-                        <div className="product__description">
-                            <Link className="product__name" to="/product/">Product</Link>
-                            <span className="product__price">10 &#8381; </span>
-                            <div className="product__category">крем</div>
-                            <div className="product__size">30ml</div>
-                        </div>
-                    </li>
-                </ul>
-                <div className="catalog__btns">
-                    <div className="pagination">
-                        <span className="current__number">1</span>
-                        <span className="total__number">8</span>
-                    </div>
-                    <div className="arrows__btns">
-                        <a href="#" className="arrow">
-                            <svg width="27" height="14" viewBox="0 0 27 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M27 7H0.999999M0.999999 7L7.30303 1M0.999999 7L7.30303 13" stroke="#122947"/>
-                            </svg>
-                        </a>
-                        <a href="#" className="arrow">
-                            <svg width="27" height="14" viewBox="0 0 27 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M0 7H26M26 7L19.697 1M26 7L19.697 13" stroke="#122947"/>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
+
+                <AliceCarousel
+                    mouseTracking
+                    items={items}
+                    responsive={responsive}
+                    controlsStrategy="alternate"/>
             </div>
         </section>
-        <section className="recents">
-            <div className="container">
-                <h3 className="recents__title">Вы недавно смотрели</h3>
-                <ul className="recents__list">
-                    <li className="catalog__product">
-                        <div className="product__description">
-                            <Link className="product__name" to="/product/">Product</Link>
-                            <span className="product__price">10 &#8381; </span>
-                            <div className="product__category">крем</div>
-                            <div className="product__size">30ml</div>
-                        </div>
-                    </li>
-                    <li className="catalog__product">
-                        <div className="product__description">
-                            <Link className="product__name" to="/product/">Product</Link>
-                            <span className="product__price">10 &#8381; </span>
-                            <div className="product__category">крем</div>
-                            <div className="product__size">30ml</div>
-                        </div>
-                    </li>
-                    <li className="catalog__product">
-                        <div className="product__description">
-                            <Link className="product__name" to="/product/">Product</Link>
-                            <span className="product__price">10 &#8381; </span>
-                            <div className="product__category">крем</div>
-                            <div className="product__size">30ml</div>
-                        </div>
-                    </li>
-                    <li className="catalog__product">
-                        <div className="product__description">
-                            <Link className="product__name" to="/product/">Product</Link>
-                            <span className="product__price">10 &#8381; </span>
-                            <div className="product__category">крем</div>
-                            <div className="product__size">30ml</div>
-                        </div>
-                    </li>
-                </ul>
-                <div className="catalog__btns">
-                    <div className="pagination">
-                        <span className="current__number">1</span>
-                        <span className="total__number">3</span>
-                    </div>
-                    <div className="arrows__btns">
-                        <a href="#" className="arrow">
-                            <svg width="27" height="14" viewBox="0 0 27 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M27 7H0.999999M0.999999 7L7.30303 1M0.999999 7L7.30303 13" stroke="#122947"/>
-                            </svg>
-                        </a>
-                        <a href="#" className="arrow">
-                            <svg width="27" height="14" viewBox="0 0 27 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M0 7H26M26 7L19.697 1M26 7L19.697 13" stroke="#122947"/>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
+
+        <CatalogViewedSection/>
         <Subscription />
         <ContactsSection />
         </>

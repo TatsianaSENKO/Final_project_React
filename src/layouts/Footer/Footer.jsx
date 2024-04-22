@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+
 import logoSrc from "/src/img/logo.png"
 import Social from "../Social/Social"
 import "./Footer.css"
@@ -7,13 +9,12 @@ function Footer() {
         <footer className="footer">
             <div className="footer__top">
                 <div className="container">
-                    <div className="footer__logo"><a href="/"><img src={logoSrc} alt="logo"/></a></div>
+                    <div className="footer__logo"><Link to="/"><img src={logoSrc} alt="logo"/></Link></div>
                     <nav className="footer__nav">
                         <ul className="nav__list">
-                            <li className="nav__item"><a href="#">Каталог</a></li>
-                            <li className="nav__item"><a href="#">О нас</a></li>
-                            <li className="nav__item"><a href="#">Магазины</a></li>
-                            <li className="nav__item"><a href="#">Контакты</a></li>
+                            <li className="nav__item"><Link to="/catalog/">Каталог</Link></li>
+                            <li className="nav__item"><Link to="/about/">О нас</Link></li>
+                            <li className="nav__item"><Link to="/contacts/">Контакты</Link></li>
                         </ul>
                     </nav>
                     <Social />
@@ -26,9 +27,6 @@ function Footer() {
                         <span> &#169; </span>
                         <span>2020 Все права защищены</span>
                     </div>
-                    {/* <div className="bottom__right">
-                        <span>Политика конфиденциальности</span>
-                    </div> */}
                 </div>
             </div>
         </footer>

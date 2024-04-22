@@ -29,7 +29,6 @@
     line-height: 40px;
     font-weight: 500;
     color:  #122947;
-    margin-bottom: 15px;
 }
 
 .page-product__category {
@@ -37,7 +36,6 @@
     line-height: 20px;
     font-weight: 400;
     color:  #9A9DA0;
-    margin-bottom: 45px;
 }
 
 .page-product__description {
@@ -46,23 +44,20 @@
     font-weight: 400;
     color:  #122947;
     padding-bottom: 45px;
-    margin-top: 45px;
+    margin-top: 35px;
     border-bottom: 1px solid #B3BAC1;
 }
 
 .size__title,
-.product__size label {
+.size__item label {
     font-size: 18px;
     line-height: 26px;
     font-weight: 500;
     color:  #122947;
 }
-
-/* button,
-h3 {
-  all: unset;
-} */
-
+.size__item label {
+    margin-left: 10px;
+}
 
 .accordion__item {
     margin-top: 20px;
@@ -126,23 +121,4 @@ h3 {
     line-height: 38px;
     font-weight: 500;
     color:  #122947;
-}
-
-.recommendations .container {
-    margin-top: 140px;
-}
-
-.recommendations__title {
-    font-family: 'Raleway', sans-serif;
-    font-size: 32px;
-    line-height: 40px;
-    font-weight: 500;
-    color:  #122947;
-    margin-bottom: 60px;
-    text-align: center;
-}
-
-.recommendations__list {
-    display: flex;
-    gap: 30px;
 }

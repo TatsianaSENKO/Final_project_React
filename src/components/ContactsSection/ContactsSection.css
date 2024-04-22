@@ -61,11 +61,16 @@
 }
 
 .contacts__phone .item__info:hover,
-.contacts__email .item__info:hover{
+.contacts__email .item__info:hover {
     color: #3415a3;
 }
+/* 
+.contacts__map {
+    display: flex;
+    align-items: center;
+} */
 
-.contacts__map-img{
+.contacts__map {
     width: 670px;
     position: absolute;
     top: 50%;

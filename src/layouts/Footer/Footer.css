@@ -17,6 +17,10 @@
     margin-left: 70px;
 }
 
+.footer__nav .nav__list .nav__item:last-child {
+    display: block;
+}
+
 .footer .social {
     margin-left: auto;
 }

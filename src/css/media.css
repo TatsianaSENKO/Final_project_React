@@ -29,7 +29,7 @@
         width: 100%;
     }
 
-    .contacts__map-img {
+    .contacts__map {
         max-width: 600px;
     }
 
@@ -147,7 +147,7 @@
         padding: 60px 0 60px 60px;
     }
 
-    .contacts__map-img {
+    .contacts__map {
         left: 400px;
     }
 
@@ -229,14 +229,13 @@
 
     .contacts__map {
         max-width: 100%;
-    }
-
-    .contacts__map-img{
-        max-width: 100%;
         position: static;
         top: 0;
         transform: translate(0, 0);
         right: 0;
+        display: flex;
+        justify-content: center;
+        width: auto;
     }
 }
 
@@ -306,7 +305,6 @@
         font-size: 16px;
         line-height: 24px;
     }
-    
     .footer {
         margin-top: 120px;
     }

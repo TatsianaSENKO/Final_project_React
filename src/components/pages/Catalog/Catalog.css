@@ -5,6 +5,7 @@
 .catalog__header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .catalog__title {
@@ -17,6 +18,29 @@
     width: 140px;
     height: 40px;
     font-size: 16px;
+}
+
+.btn-filter.active {
+    display: none;
+}
+
+.btn-filter.none {
+    display: none;
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+    font-weight: 500;
+    border: none;
+    background: none;
+}
+
+.btn-filter.none:hover {
+    box-shadow: none;
+    font-weight: 600;
+}
+
+.btn-filter.none.active {
+    display: block;
 }
 
 .catalog__list {
@@ -35,7 +59,8 @@
     align-items: center;
     justify-content: center;
     padding: 300px 20px 20px 20px;
-    background: url(/src/img/product_bg.png) no-repeat;
+    /* background: url(/src/img/product_bg.png
+     */
 }
 
 .product__name {
