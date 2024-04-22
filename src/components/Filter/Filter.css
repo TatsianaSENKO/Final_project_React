@@ -1,0 +1,42 @@
+.container__filter {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    top: 200px;
+    position: absolute;
+    width: 100%;
+    padding: 30px 0;
+    background: #F8F8F6;
+}
+
+.container__filter.active{
+    display: flex;
+    z-index: 10;
+}
+
+.filter__title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.filter__list {
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+}
+
+.filter__subcategory {
+    font-size: 16px;
+}
+
+.filter__subcategory label{
+    margin-left: 10px;
+}
+
+.filter__btns {
+    display: flex;
+    gap: 20px;
+}
