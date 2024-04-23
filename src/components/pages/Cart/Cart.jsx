@@ -89,10 +89,10 @@ function Cart() {
                         <li key={index} className="cart__product">
                             <div className="cart__product_image"><img src={item.imageTile} alt="{item.title}" /></div>
                             <div className="cart__product_title"><Link to={`/product/${item.id}/`}>{item.name}</Link></div>
-                            <div className="cart__product_size">${item.size}</div>
-                            <div className="cart__product_price">${item.price}</div>
+                            <div className="cart__product_size">{item.size}</div>
+                            <div className="cart__product_price">₽{item.price}</div>
                             <div className="cart__product_quantity"><input min="1" max="100" onChange={(event) => { changeQuantity(item.id, event.target.value, event.target) }} type="number" defaultValue={item.quantity} /></div>
-                            <div className="cart__product_sum">${item.price*item.quantity}</div>
+                            <div className="cart__product_sum">₽{item.price*item.quantity}</div>
                             <div className="cart__product_btns"><button onClick={() => { remove(item.id) }}>x</button></div>
                         </li>
                         );
@@ -103,7 +103,7 @@ function Cart() {
                         <div className="cart__footer_column"></div>
                         <div className="cart__footer_column"></div>
                         <div className="cart__footer_column"></div>
-                        <div className="cart__footer_column"><div className="cart__total">${total}</div></div>
+                        <div className="cart__footer_column"><div className="cart__total">₽{total}</div></div>
                         <div className="cart__footer_column"></div>
                     </li>
                 </ul>

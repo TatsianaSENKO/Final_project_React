@@ -1,5 +1,21 @@
 .header__cart {
     display: flex;
+    position: relative;
+}
+
+.header__cart_count{
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: #afd7fa;
+    border-radius: 10px;
+    top: 10px;
+    left: 20px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
 }
 
 .cart {

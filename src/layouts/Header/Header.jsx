@@ -7,6 +7,7 @@ import logoSrc from "/src/img/logo.png"
 import Nav from "../../components/Nav/Nav"
 import CartWidget from "../../components/pages/Cart/CartWidget"
 import AuthModal from "../../components/AuthModal/AuthModal"
+import Social from '../Social/Social'
 
 import "./Header.css"
 
@@ -39,13 +40,17 @@ function Header() {
         </header>
 
         <AuthModal open={authModalOpen}>
-            <form className="container__auth">
-            <h3 className="auth__title">Вход в аккаунт</h3>
-            <input type="text" placeholder="Ваш email или номер телефона" required className='field'/>
-            <input type="text" placeholder="Пароль" required className='field'/>
-            <button className="btn btn-form">Войти</button>
-            </form>
-            <button onClick={() => {setAuthModalOpen(false)}}className="btn-auth-close">X</button>
+            <div className="auth">
+                <form className="container__auth">
+                    <h3 className="auth__title">Вход в аккаунт</h3>
+                    <input type="text" placeholder="Ваш email или номер телефона" required className='field'/>
+                    <input type="text" placeholder="Пароль" required className='field'/>
+                    <button className="btn btn-form-auth">Войти</button>
+                </form>
+                <button onClick={() => {setAuthModalOpen(false)}} className="btn-auth-close">X</button>
+                {/* <h3 className="auth__title-social">Войти через аккаунт соцсетей</h3>
+                <Social/> */}
+            </div>
         </AuthModal>
 
         </>

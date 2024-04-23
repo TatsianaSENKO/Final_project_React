@@ -81,10 +81,14 @@ function Home() {
                 <h3 className="form__title">Форма для отправки анкеты</h3>
                 <p className="form__text">Ответьте на нижеперечисленные вопросы и наш специалист свяжется с Вами.</p>
                 <form action="" method="dialog" >
-                    <label htmlFor="name">Ваше имя</label>
-                    <input type="text" id="name" required className='field'/>
-                    <label htmlFor="age">Ваш возраст</label>
-                    <input type="text" id="age" required className='field'/>
+                    <label className='name-field'>Ваше имя
+                    <input type="text" required className='field'/>
+                    </label>
+                    
+                    <label className='name-field'>Ваш возраст
+                    <input type="text" required className='field'/>
+                    </label>
+                    
                     <div className="gender">
                         <h4>Ваш пол</h4>
                         <div className="gender__item">
@@ -96,6 +100,10 @@ function Home() {
                         <label htmlFor="women">женщина</label>
                         </div>
                     </div>
+                    <label className='name-field'>Тип кожи
+                    <input type="text" required className='field'/>
+                    </label>
+                    
                     <div className="form__button">
                         <button className="btn btn-form">Отправить</button>
                         <button type="reset" className="btn btn-form">Очистить</button>
