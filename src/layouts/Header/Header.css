@@ -28,9 +28,11 @@
     display: flex;
     gap: 30px;
     margin-right: 0;
+    cursor: pointer;
 }
 
-.header__icons a{
+.header__account{
     display: flex;
     justify-content: center;
+    cursor: pointer;
 }
