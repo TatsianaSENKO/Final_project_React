@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import { useContext, useEffect, useState, useMemo, useCallback } from 'react'
 
 import AliceCarousel from 'react-alice-carousel'
@@ -28,12 +29,11 @@ function Catalog() {
         All: "all"
       }
 
-
     const data = useContext(MainContext)
 
-    const [openFilter, setOpenFilter] = useState()
+    const { category } = useParams()
 
-    const [dataCatalog, setDataCatalog] = useState([])
+    const [openFilter, setOpenFilter] = useState()
 
     const [dataCatalogFilter, setDataCatalogFilter] = useState([])
 
@@ -42,9 +42,8 @@ function Catalog() {
     const [dataSlaider, setDataSlaider] = useState([])
 
     const CatalogList = () => {
-        let dataTmp = data.filter(item => item.base == 'true')
 
-        setDataCatalogFilter([...dataTmp])
+        setDataCatalogFilter([...data])
         setOpenFilter ()
     }
 
@@ -56,9 +55,7 @@ function Catalog() {
 
     useEffect(() => {
 
-        let dataTmp = data.filter(item => item.base == 'true')
-        setDataCatalog([...dataTmp])
-        setDataCatalogFilter([...dataTmp])
+        setDataCatalogFilter([...data])
 
     }, [data])
 
@@ -68,7 +65,7 @@ function Catalog() {
 
     }
 
-    const filteredTodos = useMemo(() => getfilteredTodos(dataCatalog, filter), [filter])
+    const filteredTodos = useMemo(() => getfilteredTodos(data, filter), [filter])
 
     const handleFilterUpdate = useCallback((newFilter) => {
         setFilter(newFilter);
@@ -87,9 +84,31 @@ function Catalog() {
 
         const partSize = 12
 
-        const dataSlaiderTmp = partData (dataCatalogFilter, partSize)
+        console.log (dataCatalogFilter)
 
-        setDataSlaider([...dataSlaiderTmp])
+        if (category == 'facial care') {
+            const dataCatalogFilterTmp = dataCatalogFilter.filter(item => item.category == 'Уход для лица')
+
+            console.log(dataCatalogFilterTmp)
+
+            const dataSlaiderTmp = partData (dataCatalogFilterTmp, partSize)
+
+            setDataSlaider([...dataSlaiderTmp])
+
+        } else if (category == 'body care') {
+            const dataCatalogFilterTmp = dataCatalogFilter.filter(item => item.category == 'Уход для тела')
+
+            console.log(dataCatalogFilterTmp)
+
+            const dataSlaiderTmp = partData (dataCatalogFilterTmp, partSize)
+
+            setDataSlaider([...dataSlaiderTmp])
+        } else {
+
+            const dataSlaiderTmp = partData (dataCatalogFilter, partSize)
+
+            setDataSlaider([...dataSlaiderTmp])
+        }
 
     }, [dataCatalogFilter])
 
@@ -100,10 +119,10 @@ function Catalog() {
                         return (
                         <div key={index} className="catalog__product" style={{background: `url(${item.imageTile}) no-repeat`}}>
                             <div className="product__description">
-                                <Link className="product__name" to={`/product/${item.subcategory}/${item.id}/`}>{item.name}</Link>
-                                <span className="product__price">{item.price} &#8381; </span>
+                                <Link className="product__name" to={`/product/${item.id}/`}>{item.name}</Link>
+                                <span className="product__price">{item.variants[0].price} &#8381; </span>
                                 <div className="product__category">{item.subcategory}</div>
-                                <div className="product__size">{item.size}</div>
+                                <div className="product__size">{item.variants[0].size}</div>
                             </div>
                         </div>
                         )
@@ -112,16 +131,16 @@ function Catalog() {
         )
         })
 
+
     const responsive = {
         0: { items: 1 },
         568: { items: 1 },
         1024: { items: 1 },
     }
 
-
 	return (
         <>
-        <Filter active={openFilter} curFilter={filter} updateFilter={handleFilterUpdate} listFilter={CatalogListFilter} resetFilter={CatalogList}/>
+        <Filter active={openFilter} curFilter={filter} updateFilter={handleFilterUpdate} listFilter={CatalogListFilter} resetFilter={CatalogList} category={category}/>
 
         <section className="catalog">
             <div className="container">

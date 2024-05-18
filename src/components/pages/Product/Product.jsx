@@ -19,11 +19,13 @@ function Product() {
 
     const data = useContext(MainContext)
 
-    const { product_id, product_category } = useParams()
-
-    const [dataProduct, setDataProduct] = useState([])
+    const { product_id } = useParams()
 
     const [product, setProduct] = useState({})
+
+    const [dataVariants, setDataVariants] = useState([])
+
+    const [productCategory, setProductCategory] = useState()
 
     const [selectedSize, setSelectedSize] = useState()
 
@@ -52,55 +54,55 @@ function Product() {
         if (data.length > 0) {
             const product = data.find((item) => {
                 return item.id == product_id
-            });
-
-            if (product.id) setProduct(product)
-        }
-
-        if (product != 0 & data.length > 0) {
-            const product = data.find((item) => {
-                return item.id == product_id
             })
-            let dataProductTmp = data.filter(item => item.name == product.name)
 
-            setDataProduct([...dataProductTmp])
+            if (product.id) {
+                setProduct(product)
+                setProductCategory(product.category)
+            }
+
+            const variantsTmp = product.variants
+            setDataVariants([...variantsTmp])
         }
+
+        addToCatalogViewed(product)
 
     }, [data])
 
     useEffect(() => {
+        if (data.length > 0) {
+            const product = data.find((item) => {
+                return item.id == product_id
+            })
 
-        if (product != 0 & data.length > 0) {
-            let dataProductTmp = data.filter(item => item.name == product.name)
-
-            setDataProduct([...dataProductTmp])
-
-            addToCatalogViewed(product)
-
+            const sizeDefault = product.variants[0].size
+            setSelectedSize(sizeDefault)
         }
 
-    }, [product])
+
+    }, [])
 
     addToCatalogViewed(product)
 
     const productSizePrice = (size) => {
 
-        let productSize = dataProduct.find ((item) => {
-            return item.countSize == size
+        let variantSize = dataVariants.find ((item) => {
+            return item.size == size
         })
 
-        if (productSize) return productSize.price
-
+        if (variantSize) return variantSize.price
     }
 
-    const productSizeId = (size) => {
+    const createProductCart = (id, name, imageTile, size, price) => {
+        const productCart = {
+            id: id,
+            name: name,
+            image: imageTile,
+            size: size,
+            price: price
+        }
 
-        let productSize = dataProduct.find ((item) => {
-            return item.countSize == size
-        })
-
-        if (productSize) return productSize.id
-
+        return productCart
     }
 
 
@@ -130,22 +132,23 @@ function Product() {
                             </Accordion.Item>
                         </Accordion.Root>
 
+
                         <ul className="page-product__size">
                             <h3 className="size__title">Объем:</h3>
-                            {dataProduct.map((item, index) => {
+                            {dataVariants.map((item, index) => {
                             return (
                                 <li key={index} className="size__item">
                                     <input type="radio"
-                                    id={`size${item.countSize}`}
+                                    defaultChecked={index == 0  ? true : false}
+                                    id={`size${item.size}`}
                                     name="size"
-                                    value={item.countSize}
+                                    value={item.size}
                                     onChange={(event) => setSelectedSize(event.target.value)}
                                     />
-                                    <label htmlFor={`size${item.countSize}`}>{item.size}</label>
+                                    <label htmlFor={`size${item.size}`}>{item.size} {item.unit}</label>
                                 </li>
                             )
                             })}
-                            {/* defaultChecked */}
                         </ul>
                         <div className="page-product__pr">
 
@@ -153,16 +156,20 @@ function Product() {
                             {productSizePrice(selectedSize)}  &#8381;
                             </span>
 
-                            <button className="btn btn__cart-add" onClick={() => { cartAdd(productSizeId(selectedSize)) }}>Добавить в корзину</button>
+                            <button className="btn btn__cart-add"  onClick={() => { cartAdd(createProductCart(product_id, product.name, product.imageTile, selectedSize, productSizePrice(selectedSize)))}}>Добавить в корзину</button>
                         </div>
                     </div>
                 </div>
         </div>
 
-        <RecommendSection />
+        <RecommendSection category={productCategory}/>
 
         </>
 	)
 }
 
 export default Product
+
+
+// onClick={() => { cartAdd(productSizeId(selectedSize)) }}
+// , productSizePrice(selectedSize)) 

@@ -187,8 +187,8 @@ h4 {
 
 .btn-form-close {
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 5px;
+    right: 5px;
     font-size: 18px;
     width: 18px;
     height: 18px;

@@ -7,7 +7,6 @@ import logoSrc from "/src/img/logo.png"
 import Nav from "../../components/Nav/Nav"
 import CartWidget from "../../components/pages/Cart/CartWidget"
 import AuthModal from "../../components/AuthModal/AuthModal"
-import Social from '../Social/Social'
 
 import "./Header.css"
 

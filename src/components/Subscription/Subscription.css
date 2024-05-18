@@ -29,3 +29,23 @@
 .subscription__text{
     margin-bottom: 40px;
 }
+
+.form__subscription {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.mail-field {
+    font-size: 16px;
+}
+
+.form__subscription p {
+    font-size: 12px;
+    line-height: 12px;
+}
+
+.btn-form-subscription {
+    margin-top: 20px;
+}

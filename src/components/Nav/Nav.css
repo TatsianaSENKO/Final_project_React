@@ -42,3 +42,14 @@
 .nav__item a:hover {
     font-weight: 600;
 }
+
+.nav__toggle.active {
+    position: fixed;
+    background:  #F8F8F6;
+    height: 44px;
+    width: 50px;
+    z-index: 10000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

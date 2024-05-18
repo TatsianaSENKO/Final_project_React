@@ -25,8 +25,9 @@ function Home() {
             <div className="promo__img promo__img-left">
                 <img src="src/img/promo_img_left.png" alt="Facial_care" />
                 <div className="promo__img-info">
-                    <Link className="promo__img-title" to="/catalog/">Уход для лица</Link>
-                    <Link className="promo__img-btn" to="/catalog/"><svg width="27" height="14" viewBox="0 0 27 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    {/* <Link className="promo__img-title" to="/catalog/">Уход для лица</Link> */}
+                    <Link className="promo__img-title" to={`/catalog/${'facial care'}/`}>Уход для лица</Link>
+                    <Link className="promo__img-btn" to={`/catalog/${'facial care'}/`}><svg width="27" height="14" viewBox="0 0 27 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M0 7H26M26 7L19.697 1M26 7L19.697 13" stroke="#122947"/>
                     </svg>
                     </Link>
@@ -41,8 +42,8 @@ function Home() {
             <div className="promo__img promo__img-right">
                 <img src="src/img/promo_img_right.png" alt="Facial_care" />
                 <div className="promo__img-info">
-                    <Link className="promo__img-title" to="/catalog/">Уход для тела</Link>
-                    <Link className="promo__img-btn" to="/catalog/"><svg width="27" height="14" viewBox="0 0 27 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <Link className="promo__img-title" to={`/catalog/${'body care'}/`}>Уход для тела</Link>
+                    <Link className="promo__img-btn" to={`/catalog/${'body care'}/`}><svg width="27" height="14" viewBox="0 0 27 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M0 7H26M26 7L19.697 1M26 7L19.697 13" stroke="#122947"/>
                     </svg>
                     </Link>
@@ -84,11 +85,11 @@ function Home() {
                     <label className='name-field'>Ваше имя
                     <input type="text" required className='field'/>
                     </label>
-                    
+
                     <label className='name-field'>Ваш возраст
                     <input type="text" required className='field'/>
                     </label>
-                    
+
                     <div className="gender">
                         <h4>Ваш пол</h4>
                         <div className="gender__item">
@@ -103,7 +104,7 @@ function Home() {
                     <label className='name-field'>Тип кожи
                     <input type="text" required className='field'/>
                     </label>
-                    
+
                     <div className="form__button">
                         <button className="btn btn-form">Отправить</button>
                         <button type="reset" className="btn btn-form">Очистить</button>

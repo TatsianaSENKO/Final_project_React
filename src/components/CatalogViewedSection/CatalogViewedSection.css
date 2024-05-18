@@ -16,3 +16,24 @@
     display: flex;
     gap: 30px;
 }
+
+/* .alice-carousel__stage {
+    display: flex;
+    gap: 20px;
+} */
+
+.alice-carousel__prev-btn [data-area]::after {
+    content: url(/src/img/prev.png);
+}
+
+.alice-carousel__next-btn [data-area]::after {
+    content: url(/src/img/next.png);
+}
+
+.alice-carousel__dots-item:not(.__custom):hover, .alice-carousel__dots-item:not(.__custom).__active {
+    background-color: #828488;
+}
+
+.alice-carousel__dots-item:not(.__custom) {
+    background-color: #dbdbdf;
+}

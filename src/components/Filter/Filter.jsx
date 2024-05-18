@@ -1,7 +1,7 @@
 
 import "./Filter.css"
 
-function Filter({active, curFilter, updateFilter, listFilter, resetFilter }) {
+function Filter({active, curFilter, updateFilter, listFilter, resetFilter, category }) {
 
     const onFiltersChange = (event) => {
         const newFilter = event.target.value
@@ -23,7 +23,7 @@ function Filter({active, curFilter, updateFilter, listFilter, resetFilter }) {
         <section className="filter">
             <div className={`container__filter ${active}`}>
                 <div className="filter__list">
-                <ul className="filter__category">
+                <ul className={`filter__category ${ category == 'body care' ? "inactive" : "" }`}>
                     <h3 className="filter__title">Уход для лица</h3>
                     <li className="filter__subcategory">
                         <input
@@ -66,7 +66,7 @@ function Filter({active, curFilter, updateFilter, listFilter, resetFilter }) {
                         <label htmlFor="tonicFace">Тоники</label>
                     </li>
                 </ul>
-                <ul className="filter__category">
+                <ul className={`filter__category ${ category == 'facial care' ? "inactive" : "" }`}>
                     <h3 className="filter__title">Уход для тела</h3>
                     <li className="filter__subcategory">
                         <input

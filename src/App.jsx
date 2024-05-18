@@ -14,17 +14,17 @@ function App() {
 
 	const [cart, setCart] = useState([])
 
-    const cartAdd = (id) => {
-        const cartTmp = cart;
+    const cartAdd = (product) => {
+        const cartTmp = cart
 
         let item = cartTmp.find((item) => {
-            return +item.id == +id
+            if (item.size == product.size) return +item.id == +product.id
         });
 
         if (item) {
             item.quantity = ++item.quantity
         } else {
-            item = { id: id, quantity: 1 }
+            item = { id: product.id, name: product.name, image: product.image, size: product.size, price: product.price, quantity: 1 }
             cartTmp.push(item)
         }
 

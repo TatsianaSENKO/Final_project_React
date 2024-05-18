@@ -80,7 +80,7 @@
         transition: transform 0.3s linear;
     }
 
-    .active {
+    .nav__list.active {
         transform: translateX(100%);
         z-index: 10;
     }
@@ -182,14 +182,16 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        grid-gap: 0;
     }
-
+/* 
     .page-product__image img{
         width: auto;
-    }
+    } */
 
     .page-product__info {
         max-width: 100%;
+
     }
 }
 

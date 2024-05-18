@@ -19,14 +19,11 @@ function BestsellersSection() {
     useEffect(() => {
 
         if (data.length > 0) {
-            let dataTmp = data.filter(item => item.base == 'true')
-            dataTmp.reverse()
-            dataTmp.length = 5
+            let dataTmp =  data.slice(0, 5)
 
             setBestProducts([...dataTmp])
         }
 
-        // setBestProducts([...data])
     }, [data])
 
     const items = bestProducts.map((item, index) => {
@@ -34,7 +31,7 @@ function BestsellersSection() {
         <div key={index} className="bestproducts__item" style={{background: `url(${item.imageTile}) no-repeat`}} data-value={index}>
             <h3 className="bestproducts__title">{item.name}</h3>
             <span className="bestproducts__category">{item.subcategory}</span>
-            <Link className="bestproducts__btn" to={`/product/${item.subcategory}/${item.id}/`}>Подробнее</Link>
+            <Link className="bestproducts__btn" to={`/product/${item.id}/`}>Подробнее</Link>
         </div>
         )
         })
@@ -56,6 +53,9 @@ return (
             </div>
             <AliceCarousel
             mouseTracking
+            autoWidth={true}
+            disableDotsControls={true}
+            infinite={true}
             items={items}
             responsive={responsive}
             controlsStrategy="alternate"/>

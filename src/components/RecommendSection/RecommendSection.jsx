@@ -11,20 +11,20 @@ import 'react-alice-carousel/lib/alice-carousel.css';
 
 import "./RecommendSection.css"
 
-function RecommendSection() {
+function RecommendSection({category}) {
 
     const data = useContext(MainContext)
 
-    const { product_id, product_category } = useParams()
+    const { product_id } = useParams()
 
     const [recommendProduct, setRecommendProduct] = useState([])
 
     useEffect(() => {
 
         if (data.length > 0) {
-            let dataTmp = data.filter(item => item.id != product_id)
+            let dataTmp = data.filter(item => item.id != category)
 
-            let dataRecomend = dataTmp.filter(item => item.subcategory == product_category)
+            let dataRecomend = dataTmp.filter(item => item.category == 'Уход для лица')
 
             setRecommendProduct([...dataRecomend])
         }
@@ -32,12 +32,13 @@ function RecommendSection() {
 
     const items = recommendProduct.map((item, index) => {
         return (
-            <div key={index} className="catalog__product" style={{background: `url(${item.imageTile}) no-repeat`}}>
+            <div key={index} className="recommend__product" style={{background: `url(${item.imageTile}) no-repeat`}}>
                 <div className="product__description">
-                    <Link className="product__name" to={`/product/${item.subcategory}/${item.id}/`}>{item.name}</Link>
-                    <span className="product__price">{item.price} &#8381; </span>
+                    {/* <Link className="product__name" to={`/product/${item.id}/`}>{item.name}</Link> */}
+                    <a className="product__name" href={`/product/${item.id}/`}>{item.name}</a>
+                    <span className="product__price">{item.variants[0].price} &#8381; </span>
                     <div className="product__category">{item.subcategory}</div>
-                    <div className="product__size">{item.size}</div>
+                    <div className="product__size">{item.variants[0].size} {item.variants[0].unit}</div>
                 </div>
             </div>
         )
@@ -56,6 +57,9 @@ return (
         <div className="recommendations__list">
             <AliceCarousel
             mouseTracking
+            disableDotsControls={true}
+            autoWidth={true}
+            infinite={true}
             items={items}
             responsive={responsive}
             controlsStrategy="alternate"/>
