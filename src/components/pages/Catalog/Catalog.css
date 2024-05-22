@@ -59,8 +59,6 @@
     align-items: center;
     justify-content: center;
     padding: 300px 20px 20px 20px;
-    /* background: url(/src/img/product_bg.png
-     */
 }
 
 .product__name {
@@ -141,3 +139,21 @@
     display: flex;
     gap: 30px;
 }
+
+@media (max-width: 1200px) {
+    .catalog__list {
+        grid-template-columns: auto auto auto;
+    }
+ }
+
+ @media (max-width: 900px) {
+    .catalog__list {
+        grid-template-columns: auto auto;
+    }
+ }
+
+ @media (max-width: 640px) {
+    .catalog__list {
+        grid-template-columns: auto;
+    }
+ }

@@ -82,3 +82,57 @@
 .alice-carousel__stage-item {
     margin-right: 20px;
 }
+
+@media (max-width: 1024px) {
+    .bestsellers__content {
+        margin-right: 40px;
+    }
+}
+
+
+@media (max-width: 800px) {
+    .bestsellers__title {
+        font-size: 28px;
+    }
+
+    .bestsellers__text {
+        font-size: 16px;
+        line-height: 24px;
+    }
+}
+
+@media (max-width: 768px) {
+    .bestsellers {
+        margin-top: 120px;
+    }
+}
+
+@media (max-width: 640px) {
+    .bestsellers {
+        margin-top: 80px;
+    }
+
+    .bestsellers__row{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .bestsellers__content {
+        align-items: center;
+        margin-right: 0;
+    }
+
+    .bestsellers__text {
+        text-align: center;
+        margin-bottom: 50px;
+    }
+
+    .bestsellers__btn {
+        display: none;
+    }
+
+    .bestsellers__btn-none {
+        display: flex;
+        margin-top: 30px;
+    }
+}

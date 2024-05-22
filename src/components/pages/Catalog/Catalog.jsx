@@ -117,14 +117,14 @@ function Catalog() {
             <div key={index} className="catalog__list">
                 {list.map((item, index) => {
                         return (
-                        <div key={index} className="catalog__product" style={{background: `url(${item.imageTile}) no-repeat`}}>
+                        <Link to={`/product/${item.id}/`} key={index} className="catalog__product" style={{background: `url(${item.imageTile}) no-repeat`}}>
                             <div className="product__description">
-                                <Link className="product__name" to={`/product/${item.id}/`}>{item.name}</Link>
+                                <div className="product__name">{item.name}</div>
                                 <span className="product__price">{item.variants[0].price} &#8381; </span>
                                 <div className="product__category">{item.subcategory}</div>
                                 <div className="product__size">{item.variants[0].size}</div>
                             </div>
-                        </div>
+                        </Link>
                         )
                     })}
             </div>

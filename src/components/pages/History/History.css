@@ -1,0 +1,41 @@
+.history {
+    padding-top: 20px;
+}
+
+.history__content {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+}
+
+@media (max-width: 1024px) {
+    .history__content img {
+        max-width: 500px;
+    }
+}
+
+@media (max-width: 800px) {
+    .history__content img {
+        max-width: 300px;
+    }
+}
+
+
+@media (max-width: 800px) {
+    .history__content {
+        flex-direction: column;
+    }
+
+    .history__content img {
+        order: -1;
+    }
+}
+
+@media (max-width: 500px) {
+    .history__text {
+        font-size: 16px;
+    }
+}
+

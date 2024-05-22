@@ -59,6 +59,7 @@ return (
             items={items}
             responsive={responsive}
             controlsStrategy="alternate"/>
+            <Link className="btn bestsellers__btn-none" to="/catalog/">Смотреть все</Link>
         </div>
     </div>
     </section>

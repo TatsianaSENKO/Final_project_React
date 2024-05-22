@@ -6,7 +6,7 @@ import Footer from "./layouts/Footer/Footer"
 import Main from "./components/Main"
 
 import './css/style.css'
-import './css/media.css'
+// import './css/media.css'
 
 export const AppContext = createContext()
 

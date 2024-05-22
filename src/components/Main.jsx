@@ -8,6 +8,7 @@ import About from "./pages/About"
 import Contacts from "./pages/Contacts"
 import Product from "./pages/Product/Product.jsx"
 import Cart from "./pages/Cart/Cart.jsx"
+import History from "./pages/History/History.jsx"
 
 export const MainContext = createContext();
 
@@ -47,6 +48,7 @@ function Main() {
             <Route path="/contacts/" element={<Contacts/>}/>
             <Route path="/product/:product_id/" element={<Product/>}/>
             <Route path="/catalog/:category/" element={<Catalog/>}/>
+            <Route path="/history/" element={<History/>}/>
             {/* <Route path="/product/:product_category/:product_id" element={<Product/>}/> */}
             <Route path="/cart/" element={<Cart/>}/>
         </Routes>
