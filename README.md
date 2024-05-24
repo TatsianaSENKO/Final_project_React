@@ -20,7 +20,7 @@
 ## Стек технологий
 
 - HTML
-- CSS
+- CSS (адаптивная верстка)
 - JS
 - React
 - React Router
