@@ -8,6 +8,7 @@
   
 ![filter](/readme_img/filter.PNG)
 - Добавление товаров в корзину
+- Корзина товаров
   
 ![product_cart](/readme_img/product_cart.PNG)
 - Оформление заказа
