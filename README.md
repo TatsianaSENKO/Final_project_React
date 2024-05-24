@@ -1,8 +1,31 @@
-# React + Vite
+# Maroon
+#### интернет-магазин косметики
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Функционал
 
-Currently, two official plugins are available:
+- Просмотр каталога товаров
+- Фильтр товаров
+![filter](/readme_img/filter.PNG)
+- Добавление товаров в корзину
+![product_cart](/readme_img/product_cart.PNG)
+- Оформление заказа
+- Авторизация пользователей
+- Формы для отправки
+![form_anketa](/readme_img/form_anketa.PNG)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Стек технологий
+
+- HTML
+- CSS
+- JS
+- React
+- React Router
+- Vite
+- JSON
+
+
+## Автор
+
+Автор: Сенько Татьяна
+[ссылка на GitHub](https://github.com/TatsianaSENKO)
+

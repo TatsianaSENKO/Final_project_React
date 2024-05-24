@@ -26,10 +26,10 @@ function ContactsSection() {
                     </div>
                 </div>
 
-                {/* <div className={`contacts__map ${location.pathname == "/contacts/" ? "contacts__map-page" : ""}`}>
+                <div className={`contacts__map ${location.pathname == "/contacts/" ? "contacts__map-page" : ""}`}>
                     <div style={{position:"relative",overflow:"hidden"}}><iframe src="https://yandex.by/map-widget/v1/?ll=30.323036%2C59.938631&mode=search&ol=geo&ouri=ymapsbm1%3A%2F%2Fgeo%3Fdata%3DCgg1NzM5NDE4NBJh0KDQvtGB0YHQuNGPLCDQodCw0L3QutGCLdCf0LXRgtC10YDQsdGD0YDQsywg0JHQvtC70YzRiNCw0Y8g0JrQvtC90Y7RiNC10L3QvdCw0Y8g0YPQu9C40YbQsCwgMTkvOCIKDZaV8kEVKcFvQg%2C%2C&z=16.69" width="560" height="400" frameBorder="1" allowFullScreen={true} style={{position:"relative"}}></iframe></div>
 
-                </div> */}
+                </div>
 
             </div>
         </section>

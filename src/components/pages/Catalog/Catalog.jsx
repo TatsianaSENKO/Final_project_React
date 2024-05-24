@@ -49,7 +49,9 @@ function Catalog() {
 
     const CatalogListFilter = () => {
 
+        if (filteredTodos.length > 0) {
         setDataCatalogFilter([...filteredTodos])
+        }
         setOpenFilter ()
     }
 
@@ -84,12 +86,8 @@ function Catalog() {
 
         const partSize = 12
 
-        console.log (dataCatalogFilter)
-
         if (category == 'facial care') {
             const dataCatalogFilterTmp = dataCatalogFilter.filter(item => item.category == 'Уход для лица')
-
-            console.log(dataCatalogFilterTmp)
 
             const dataSlaiderTmp = partData (dataCatalogFilterTmp, partSize)
 
@@ -97,8 +95,6 @@ function Catalog() {
 
         } else if (category == 'body care') {
             const dataCatalogFilterTmp = dataCatalogFilter.filter(item => item.category == 'Уход для тела')
-
-            console.log(dataCatalogFilterTmp)
 
             const dataSlaiderTmp = partData (dataCatalogFilterTmp, partSize)
 

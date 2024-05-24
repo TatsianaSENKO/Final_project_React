@@ -8,6 +8,11 @@ function Filter({active, curFilter, updateFilter, listFilter, resetFilter, categ
         updateFilter(newFilter)
       }
 
+      const resetFiltersChange = () => {
+        resetFilter()
+        updateFilter(null)
+      }
+
       const COMPLETE_FILTER = {
         CreamFace: "creamFace",
         MaskFace: "maskFace",
@@ -102,7 +107,7 @@ function Filter({active, curFilter, updateFilter, listFilter, resetFilter, categ
                 </div>
                 <div className="filter__btns">
                     <button onClick={listFilter} className="btn btn-filter">Применить</button>
-                    <button onClick={resetFilter} className="btn btn-filter">Сбросить</button>
+                    <button onClick={() => {resetFiltersChange()}} className="btn btn-filter">Сбросить</button>
                 </div>
                 </div>
         </section>

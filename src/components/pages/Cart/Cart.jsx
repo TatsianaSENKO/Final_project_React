@@ -4,22 +4,19 @@ import { Link } from "react-router-dom"
 import InputMask from 'react-input-mask'
 
 import { AppContext } from "../../../App"
-import { MainContext } from "../../Main"
 import CartNullModal from "./CartNullModal"
 import CartModal from "./CartModal"
 
 function Cart() {
     const {cart, setCart} = useContext(AppContext)
-    const data = useContext(MainContext)
 
-    const [cartList, setCartList] = useState([])
     const [total, setTotal] = useState(0)
     const [name, setName] = useState('')
     const [phone, setPhone] = useState('')
     const [address, setAddress] = useState('')
-    const [hasErrorName, setHasErrorName] = useState(false)
-    const [hasErrorPhone, setHasErrorPhone] = useState(false)
-    const [hasErrorAddress, setHasErrorAddress] = useState(false)
+    const [hasErrorName, setHasErrorName] = useState(true)
+    const [hasErrorPhone, setHasErrorPhone] = useState(true)
+    const [hasErrorAddress, setHasErrorAddress] = useState(true)
 
     const [cartNullModalOpen, setCartNullModalOpen] = useState(false)
     const [cartModalOpen, setCartModalOpen] = useState(false)
@@ -35,8 +32,6 @@ function Cart() {
         if (cartItem) {
             cartItem.quantity = +value;
 
-            console.log(cartItem)
-
             const cartTmp = cart
 
             setCart([...cartTmp]);
@@ -49,36 +44,9 @@ function Cart() {
         const cartTmp = cart.filter((item) => !(item.size == size && item.id == id) )
 
         setCart([...cartTmp])
-        console.log(cart)
         localStorage.setItem('cart', JSON.stringify(cartTmp))
     }
 
-
-
-    // useEffect(() => {
-    //     const cartListTmp = data.filter((product) => {
-    //         const cartItem = cart.find((item) => {
-    //             product.quantity = item.quantity
-    //             product.size = item.size
-    //             product.price = item.price
-
-    //             return item.id == product.id
-    //         })
-    //         console.log(cartItem)
-
-            
-
-    //         if (cartItem) return product
-            
-
-    //     })
-
-    //     if (cartListTmp && cartListTmp.length > 0) setCartList([...cartListTmp])
-
-
-
-
-    // }, [cart])
 
     useEffect(() => {
         let totalTmp = 0
@@ -92,11 +60,6 @@ function Cart() {
         setTotal(totalTmp)
 
     }, [cart])
-
-    // useEffect(() => {
-
-    //     if (cart.length == 0) setTotal(0)
-    // })
 
     function openCartNullModal() {
         setCartNullModalOpen(true)
@@ -231,5 +194,3 @@ function Cart() {
 }
 
 export default Cart
-
-// disabled={hasErrorName || hasErrorAddress || hasErrorPhone}
