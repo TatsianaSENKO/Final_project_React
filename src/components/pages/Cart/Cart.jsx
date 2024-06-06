@@ -21,16 +21,20 @@ function Cart() {
     const [cartNullModalOpen, setCartNullModalOpen] = useState(false)
     const [cartModalOpen, setCartModalOpen] = useState(false)
 
+    const [cartItems, setCartItems] = useState()
+
     const isMobile = useMediaQuery({ maxWidth: 767 })
     const isDesktop = useMediaQuery({ minWidth: 768 })
 
 
-    const changeQuantity = (id, size, value) => {
+    const changeQuantityPlus = (id, size) => {
 
         const cartItem = cart.find((item) => item.id == id && item.size == size)
 
+        console.log(cartItem)
+
         if (cartItem) {
-            cartItem.quantity = +value;
+            cartItem.quantity++
 
             const cartTmp = cart
 
@@ -39,6 +43,23 @@ function Cart() {
         }
     }
 
+    const changeQuantityMinus = (id, size) => {
+
+        const cartItem = cart.find((item) => item.id == id && item.size == size)
+
+        console.log(cartItem)
+
+        if (cartItem) {
+            cartItem.quantity--
+
+            const cartTmp = cart
+
+            setCart([...cartTmp]);
+            localStorage.setItem('cart', JSON.stringify(cartTmp));
+        }
+    }
+
+
     const remove = (id, size) => {
 
         const cartTmp = cart.filter((item) => !(item.size == size && item.id == id) )
@@ -46,6 +67,8 @@ function Cart() {
         setCart([...cartTmp])
         localStorage.setItem('cart', JSON.stringify(cartTmp))
     }
+
+    console.log(cart)
 
 
     useEffect(() => {
@@ -101,7 +124,12 @@ function Cart() {
                                 <div className="cart__product_title"><Link to={`/product/${item.id}/`}>{item.name}</Link></div>
                                 <div className="cart__product_size"><span className="name-mobile">Объем:</span> {item.size}</div>
                                 <div className="cart__product_price"><span className="name-mobile">Цена:</span> {item.price} ₽</div>
-                                <div className="cart__product_quantity">Количество: <input min="1" max="100" onChange={(event) => { changeQuantity(item.id, item.size, event.target.value, event.target) }} type="number" defaultValue={item.quantity} /></div>
+                                <div className="cart__product_quantity">
+                                <span className="name-mobile">Количество:</span>
+                                <button className="product_quantity__btn" onClick={() => { changeQuantityMinus(item.id, item.size) }}>-</button>
+                                {item.quantity}
+                                <button className="product_quantity__btn" onClick={() => { changeQuantityPlus(item.id, item.size) }}>+</button>
+                                </div>
                                 <div className="cart__product_sum">Стоимость: {item.price*item.quantity} ₽</div>
                                 <div className="cart__product_btns-mobile"><button onClick={() => { remove(item.id, item.size) }}>x</button></div>
                             </div>
@@ -134,7 +162,11 @@ function Cart() {
                             <div className="cart__product_title"><Link to={`/product/${item.id}/`}>{item.name}</Link></div>
                             <div className="cart__product_size">{item.size}</div>
                             <div className="cart__product_price">{item.price} ₽</div>
-                            <div className="cart__product_quantity"><input min="1" max="100" onChange={(event) => { changeQuantity(item.id, item.size, event.target.value, event.target) }} type="number" defaultValue={item.quantity} /></div>
+                            <div className="cart__product_quantity">
+                            <button className="product_quantity__btn" onClick={() => { changeQuantityMinus(item.id, item.size) }}>-</button>
+                                {item.quantity}
+                                <button className="product_quantity__btn" onClick={() => { changeQuantityPlus(item.id, item.size) }}>+</button>
+                            </div>
                             <div className="cart__product_sum">{item.price*item.quantity} ₽</div>
                             <div className="cart__product_btns"><button onClick={() => { remove(item.id, item.size) }}>x</button></div>
                         </li>

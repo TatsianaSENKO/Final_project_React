@@ -75,7 +75,7 @@ function Product() {
                 return item.id == product_id
             })
 
-            if (!event.target.value || event.target.value == product.variants[0].size) {
+            if (!selectedSize && !event.target.value || !selectedSize && event.target.value == product.variants[0].size) {
 
             const sizeDefault = product.variants[0].size
             setSelectedSize(sizeDefault)
