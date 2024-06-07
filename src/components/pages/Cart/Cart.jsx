@@ -21,8 +21,6 @@ function Cart() {
     const [cartNullModalOpen, setCartNullModalOpen] = useState(false)
     const [cartModalOpen, setCartModalOpen] = useState(false)
 
-    const [cartItems, setCartItems] = useState()
-
     const isMobile = useMediaQuery({ maxWidth: 767 })
     const isDesktop = useMediaQuery({ minWidth: 768 })
 
@@ -52,11 +50,17 @@ function Cart() {
         if (cartItem) {
             cartItem.quantity--
 
+            if (cartItem.quantity == 0) {
+                remove(cartItem.id, cartItem.size)
+                return
+            }
+
             const cartTmp = cart
 
             setCart([...cartTmp]);
             localStorage.setItem('cart', JSON.stringify(cartTmp));
         }
+
     }
 
 
@@ -67,9 +71,6 @@ function Cart() {
         setCart([...cartTmp])
         localStorage.setItem('cart', JSON.stringify(cartTmp))
     }
-
-    console.log(cart)
-
 
     useEffect(() => {
         let totalTmp = 0
@@ -105,6 +106,15 @@ function Cart() {
     const handlePhoneChange = (event) => {
         setPhone(event.target.value)
         setHasErrorPhone(event.target.value.trim().length === 0)
+    }
+
+    const removeForm = () => {
+        setPhone('')
+        setName('')
+        setAddress('')
+        setHasErrorName(true)
+        setHasErrorAddress(true)
+        setHasErrorPhone(true)
     }
 
     return (
@@ -206,7 +216,7 @@ function Cart() {
                         <button onClick={() => {
                         total===0 ? openCartNullModal() : openCartModal();
                         }} disabled={hasErrorName || hasErrorAddress || hasErrorPhone} className="btn btn-form" >Оформить заказ</button>
-                        <button type="reset" className="btn btn-form">Очистить</button>
+                        <button className="btn btn-form" onClick={removeForm}>Очистить</button>
                     </div>
             </div>
         </div>

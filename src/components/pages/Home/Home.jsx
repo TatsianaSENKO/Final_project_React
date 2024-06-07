@@ -1,6 +1,7 @@
 import { useState } from 'react'
 
 import { Link } from "react-router-dom"
+import InputMask from 'react-input-mask'
 
 import AboutSection from "../../AboutSection/AboutSection.jsx"
 import Subscription from "../../Subscription/Subscription.jsx"
@@ -13,6 +14,37 @@ import "./Home.css"
 function Home() {
 
     const [modalFormOpen, setModalFormOpen] = useState(false)
+    const [modalOpen, setModalOpen] = useState(false)
+    const [hasErrorPhone, setHasErrorPhone] = useState(true)
+    const [phone, setPhone] = useState('')
+    const [hasErrorName, setHasErrorName] = useState(true)
+    const [name, setName] = useState('')
+    const [hasErrorAge, setHasErrorAge] = useState(true)
+    const [age, setAge] = useState('')
+
+    const handlePhoneChange = (event) => {
+        setPhone(event.target.value)
+        setHasErrorPhone(event.target.value.trim().length === 0)
+    }
+
+    const handleNameChange = (event) => {
+        setName(event.target.value)
+        setHasErrorName(event.target.value.trim().length === 0)
+    }
+
+    const handleAgeChange = (event) => {
+        setAge(event.target.value)
+        setHasErrorAge(event.target.value.trim().length === 0)
+    }
+
+    const removeForm = () => {
+        setPhone('')
+        setName('')
+        setAge('')
+        setHasErrorName(true)
+        setHasErrorAge(true)
+        setHasErrorPhone(true)
+    }
 
     function openFormModal() {
         setModalFormOpen(true)
@@ -82,11 +114,11 @@ function Home() {
                 <p className="form__text">Ответьте на нижеперечисленные вопросы и наш специалист свяжется с Вами.</p>
                 <form action="" method="dialog" >
                     <label className='name-field'>Ваше имя
-                    <input type="text" required className='field'/>
+                    <input type="text" value={name} style={{border: hasErrorName ? '1px solid red' : null}} onChange={handleNameChange} className='field'/>
                     </label>
 
                     <label className='name-field'>Ваш возраст
-                    <input type="text" required className='field'/>
+                    <input name='phone' type="number" min="1" max="100" value={age} style={{border: hasErrorAge ? '1px solid red' : null}} onChange={handleAgeChange} className='field'/>
                     </label>
 
                     <div className="gender">
@@ -101,16 +133,30 @@ function Home() {
                         </div>
                     </div>
                     <label className='name-field'>Тип кожи
-                    <input type="text" required className='field'/>
+                    <input type="text" className='field'/>
+                    </label>
+                    <label className='name-field'>Номер телефона
+                    <InputMask mask="+375 (99) 999-99-99" maskChar="_" value={phone} style={{border: hasErrorPhone ? '1px solid red' : null}} onChange={handlePhoneChange}>
+                            {(inputProps) => <input {...inputProps} className='field' placeholder="+375 (__) ___-__- __" />}
+                    </InputMask>
                     </label>
 
                     <div className="form__button">
-                        <button className="btn btn-form">Отправить</button>
-                        <button type="reset" className="btn btn-form">Очистить</button>
+                        <button className="btn btn-form" onClick={() => {setModalOpen(true), setModalFormOpen(false)}} disabled={hasErrorName || hasErrorAge || hasErrorPhone}>Отправить</button>
+                        <button className="btn btn-form" onClick={removeForm}>Очистить</button>
                     </div>
                 </form>
                 <button onClick={() => {setModalFormOpen(false)}} className="btn-form-close">X</button>
                 </div>
+    </FormModal>
+
+    <FormModal open={modalOpen}>
+        <div>
+            <div className="subscription_modal">Благодарим Вас!
+            <p>Наш специалист свяжется с Вами.</p>
+            <button className="btn btn-subscription_modal" onClick={() => {setModalOpen(false)}} >OK</button>
+            </div>
+        </div>
     </FormModal>
 
     <AboutSection />

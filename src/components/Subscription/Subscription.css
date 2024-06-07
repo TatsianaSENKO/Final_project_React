@@ -50,6 +50,18 @@
     margin-top: 20px;
 }
 
+.subscription_modal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.btn-subscription_modal {
+    width: 150px;
+}
+
 @media (max-width: 1152px) {
     .subscription__images {
         margin-right: 20px;

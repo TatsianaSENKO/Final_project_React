@@ -6,10 +6,31 @@ import SubscriptionModal from '../SubscriptionModal/SubscriptionModal.jsx'
 function Subscription() {
 
     const [modalSubscriptionOpen, setModalSubscriptionOpen] = useState(false)
+    const [modalOpen, setModalOpen] = useState(false)
+
+    const [email, setEmail] = useState('')
+    const [valid, setValid] = useState(false)
+
+    const handleInputChange = (event) => {
+        const inputValue = event.target.value;
+        setEmail(inputValue);
+
+        const isValid = /\S+@\S+\.\S+/.test(inputValue);
+        setValid(isValid);
+    }
+
+    const handleClick = () => {
+
+        if (valid) {
+            setModalSubscriptionOpen(false)
+            setModalOpen(true)
+        }
+    }
 
     function openSubscriptionModal() {
         setModalSubscriptionOpen(true)
     }
+
 	return (
     <>
     <section className="subscription">
@@ -33,13 +54,28 @@ function Subscription() {
     <SubscriptionModal open={modalSubscriptionOpen}>
         <form action="" method="dialog" className="form__subscription">
             <label className='mail-field'>Электронная почта
-            <input type="email" required className='field'/>
+            <input className='field'
+             type="email"
+             value={email}
+             onChange={handleInputChange}
+             placeholder="Введите ваш email"/>
             </label>
             <p>* Нажимая кнопку отправить Вы даете согласие на получение рассылки.</p>
-            <button className="btn btn-form-subscription">Отправить</button>
+            <button className="btn btn-form-subscription" disabled = {!valid ? true : false} onClick={handleClick}>Отправить</button>
+            {!valid && <p style={{ color: 'red' }}>Введите корректный email</p>}
         </form>
         <button onClick={() => {setModalSubscriptionOpen(false)}} className="btn-form-close">X</button>
     </SubscriptionModal>
+
+    <SubscriptionModal open={modalOpen}>
+        <div>
+            <div className="subscription_modal">Благодарим Вас!
+            <p>Следите за нашими новинками и акциями.</p>
+            <button className="btn btn-subscription_modal" onClick={() => {setModalOpen(false)}} >OK</button>
+            </div>
+        </div>
+    </SubscriptionModal>
+
     </>
 )
 }
