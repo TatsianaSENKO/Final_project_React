@@ -5,18 +5,22 @@
 
 - Просмотр каталога товаров
 - Фильтр товаров
+  
 ![filter](/readme_img/filter.PNG)
 - Добавление товаров в корзину
+- Корзина товаров
+  
 ![product_cart](/readme_img/product_cart.PNG)
 - Оформление заказа
 - Авторизация пользователей
 - Формы для отправки
+  
 ![form_anketa](/readme_img/form_anketa.PNG)
 
 ## Стек технологий
 
 - HTML
-- CSS
+- CSS (адаптивная верстка)
 - JS
 - React
 - React Router
